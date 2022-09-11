@@ -12,22 +12,26 @@
   </div>
 
   <div id="murals" class="w-full flex justify-center">
-    <table class="table-auto w-full">
-      <thead class="rounded-lg bg-violet-700">
-        <tr>
+    <table class="flex flex-col w-full">
+      <thead class="rounded-lg bg-stone-900">
+        <tr class="flex">
           <th class="w-1/4">Name</th>
           <th class="w-1/4">Title</th>
-          <th class="w-1/4">Action</th>
           <th class="w-1/4">Created At</th>
+          <th class="w-1/4">Actions</th>
         </tr>
       </thead>
       <tbody>
       <% @murals.each do |mural, index| %>
-        <tr class="h-20 cursor-pointer hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-100 focus:ring-opacity-50">
-          <td class="px-2 text-blue-500"><%= "@#{mural.name}" %></td>
-          <td class="px-2"><%= mural.title %></td>
-          <td class="px-2"><%= mural.title %></td>
-          <td class="px-2"><%= mural.created_at %></td>
+        <tr class="flex w-full h-20 cursor-pointer hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-600 focus:ring-opacity-50">
+          <td class="w-1/4 px-2 flex justify-start items-center text-orange-500"><%= "@#{mural.name}" %></td>
+          <td class="w-1/4 px-2 flex justify-start items-center"><%= mural.title %></td>
+          <td class="w-1/4 px-2 flex justify-center items-center"><%= mural.created_at %></td>
+          <td class="w-1/4 px-2 flex justify-end items-center">
+            <%= link_to '', mural_path(mural), class: "fa-solid fa-door-open" %>
+            <%= link_to '', edit_mural_path(mural), class: "fa-regular fa-edit ml-4" %>
+            <%= button_to '', mural, method: :delete, class: "fa-solid fa-trash ml-4" %>          
+          </td>
         </tr>
       <%end%>
       </tbody>

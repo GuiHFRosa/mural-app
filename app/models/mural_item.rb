@@ -1,0 +1,2 @@
+class MuralItem < ApplicationRecord
+end
